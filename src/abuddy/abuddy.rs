@@ -1,5 +1,3 @@
-
-
 use std::fs::OpenOptions;
 use std::io::prelude::*;
 use std::io::BufReader;
@@ -18,7 +16,6 @@ pub struct Abuddy {
 }
 
 impl Abuddy {
-
     pub fn from_file(file_name: &str) -> Abuddy {
         let file = match OpenOptions::new().read(true).create(true).open(file_name) {
             Ok(file) => file,
@@ -75,28 +72,14 @@ impl Abuddy {
     }
 
     pub fn delete_todo(&mut self, id: u32) {
-
         self.todos.retain(|todo| todo.id != id);
         println!("idx: {}", id);
-        // self.todos.remove(idx);
-
     }
 
     pub fn delete_task(&mut self, todo_id: u32, task_id: u32) {
         let mut todo = self.todos.iter_mut().filter(|&ref todo| todo.id == todo_id).collect::<Vec<&mut Todo>>();
         todo[0].delete_task(task_id);
-        // {
-            // Ok(vec) => vec,
-            // _ => panic!("Todo not found!"),
-        // };
-
-        // println!("{}", todo[0]);
-
     }
-
-    // pub fn remove_todo(id: u32) {
-    //     self.todos.
-    // }
 
     pub fn print(&self) {
         println!("   Todos: ");

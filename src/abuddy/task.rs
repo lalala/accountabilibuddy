@@ -1,6 +1,4 @@
-
 use std::fmt;
-
 
 #[derive(Debug, RustcDecodable, RustcEncodable)]
 pub struct Task {
@@ -28,5 +26,4 @@ impl Task {
     pub fn toggle_done(&mut self) {
         self.done = !self.done;
     }
-
 }

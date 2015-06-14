@@ -1,6 +1,5 @@
 use std::fmt;
 use time;
-
 use super::Task;
 
 #[derive(Debug, RustcDecodable, RustcEncodable)]
@@ -13,7 +12,6 @@ pub struct Todo {
   count: u32,
 }
 
-
 impl fmt::Display for Todo {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         let time = time::at(time::Timespec::new(self.created_at as i64, 0));
@@ -21,7 +19,6 @@ impl fmt::Display for Todo {
         
         let checkbox = if self.done { "☑" } else { "☐" };
         let mut tasks_string: String = "".to_string();
-        // let mut other_string:String = "".to_string();
 
         for task in self.tasks.iter() {
             tasks_string = tasks_string + &format!("{}\n", task);
@@ -32,7 +29,6 @@ impl fmt::Display for Todo {
 }
 
 impl Todo {
-
     pub fn new(id: u32, message: &str, created_at: time::Tm, tasks: Vec<Task>) -> Todo {
         let created_at: u64 = created_at.to_timespec().sec as u64;
         Todo {
@@ -65,21 +61,4 @@ impl Todo {
     pub fn delete_task(&mut self, id: u32) {
         self.tasks.retain(|task| task.id != id);
     }
-    // pub fn tasks(&self) -> Vec<Task> {
-    //   self.tasks
-    // }
-    // pub fn add_task(&mut self, task: &mut Task) {
-    //     self.len = self.len + 1;
-    //     task.set_id(self.len);
-    //     let task = task.clone();
-    //     self.sub_tasks.push(task);
-    // }
-
-    // pub fn has_tasks(&self) -> bool {
-    //     self.tasks.len() > 0
-    // }
-
-    // pub fn set_id(&mut self, id: u32) {
-    //     self.id = id;
-    // }
 }

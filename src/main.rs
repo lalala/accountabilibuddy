@@ -15,7 +15,6 @@ fn print_usage(opts: Options) {
 
 fn main() {
 
-
     let argv: Vec<String> = env::args().collect();
     let mut opts = Options::new();
     
@@ -25,7 +24,6 @@ fn main() {
     };
 
     let save_file = home.to_str().unwrap().to_string() + "/.accountabilibuddy";
-    
 
     opts.optflag("a", "add", "Add a new todo.");
     opts.optflag("h", "help", "Show this menu");
@@ -46,15 +44,11 @@ fn main() {
     let mut abuddy = Abuddy::from_file(&save_file);
 
     if valid_options.opt_present("a") {
-      // let message = argv[1];
-      // println!("{}", argv[2]);
       abuddy.add_todo(&argv[2]);
       abuddy.save();
     }
 
     if valid_options.opt_present("t") {
-
-      // let task_id: String = argv[2];
 
       let id: u32 = match argv[2].trim().parse() {
         Ok(num) => num,
@@ -78,14 +72,12 @@ fn main() {
         Err(_) => abuddy.toggle_done(id),
       };
 
-      // abuddy.toggle_done(id);
       abuddy.save();
     }
 
     if valid_options.opt_present("d") {
 
-      // let id: u32 = 
-      let id:u32 = match argv[2].trim().parse() {
+      let id: u32 = match argv[2].trim().parse() {
         Ok(num) => num,
         Err(_) => exit(1),
       };
