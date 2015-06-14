@@ -8,11 +8,11 @@ use std::process::exit;
 mod abuddy;
 use abuddy::Abuddy;
 
-
 fn print_usage(opts: Options) {
   let brief = format!("Usage: {} [options]", "accountabilibuddy");
   print!("{}", opts.usage(&brief));
 }
+
 fn main() {
 
 

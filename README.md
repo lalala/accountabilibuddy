@@ -1,1 +1,1 @@
-# Simple CLI Todo application written in Rust
+## Simple CLI Todo application written in Rust
